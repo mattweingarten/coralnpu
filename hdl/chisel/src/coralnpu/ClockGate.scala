@@ -24,5 +24,5 @@ class ClockGate extends BlackBox with HasBlackBoxResource {
     val te     = Input(Bool())
     val clk_o  = Output(Clock())
   })
-  addResource("ClockGate.sv")
+  addResource("hdl/verilog/ClockGate.sv")
 }

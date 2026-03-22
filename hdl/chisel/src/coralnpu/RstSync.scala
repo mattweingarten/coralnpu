@@ -27,5 +27,5 @@ class RstSync extends BlackBox with HasBlackBoxResource {
         val clk_o = Output(Clock())
         val rstn_o = Output(AsyncReset())
     })
-    addResource("RstSync.sv")
+    addResource("hdl/verilog/RstSync.sv")
 }
