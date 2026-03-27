@@ -16,3 +16,6 @@ tests/uvm/sim_work
 tests/uvm/vc_hdrs.h
 # python
 __pycache__
+build/
+target/
+project/target/

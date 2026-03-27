@@ -1,0 +1,12 @@
+[submodule "external/common_cells"]
+	path = external/common_cells
+	url = https://github.com/pulp-platform/common_cells.git
+[submodule "external/cvfpu"]
+	path = external/cvfpu
+	url = https://github.com/openhwgroup/cvfpu.git
+[submodule "external/fpu_div_sqrt_mvp"]
+	path = external/fpu_div_sqrt_mvp
+	url = https://github.com/pulp-platform/fpu_div_sqrt_mvp.git
+[submodule "external/RVVI"]
+	path = external/RVVI
+	url = https://github.com/riscv-verification/RVVI.git

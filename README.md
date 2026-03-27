@@ -22,26 +22,59 @@ Coral NPU offers the following top-level feature set:
 * Both memories are single-cycle-latency SRAM, more efficient than cache memory
 * AXI4 bus interfaces, functioning as both manager and subordinate, to interact with external memory and allow external CPUs to configure Coral NPU
 
-## System Requirements
+## System Requirements (core generation only)
 
-* Bazel 7.4.1
-* Python 3.9-3.12 (3.13 support is in progress)
-* [SRecord](https://srecord.sourceforge.net/)
+This setup focuses only on generating core Verilog from Scala/Chisel.
 
-## Quick Start
+Required packages:
+
+* `git`
+* `openjdk-17-jdk` (or newer JDK)
+* `curl` (for local SBT launcher bootstrap)
+
+Install with apt:
 
 ```bash
-# Ensure that test suite passes
-bazel run //tests/cocotb:core_mini_axi_sim_cocotb
+sudo apt-get update
+sudo apt-get install -y git openjdk-17-jdk curl
+```
 
-# Build a binary
-bazel build //examples:coralnpu_v2_hello_world_add_floats
+## Initialize required git submodules
 
-# Build the Simulator (non-RVV for shorter build time):
-bazel build //tests/verilator_sim:core_mini_axi_sim
+The core generator references HDL sources from these dependency repositories
+through Chisel blackbox resources:
 
-# Run the binary on the simulator:
-bazel-bin/tests/verilator_sim/core_mini_axi_sim --binary bazel-out/k8-fastbuild-ST-dd8dc713f32d/bin/examples/coralnpu_v2_hello_world_add_floats.elf
+* `external/common_cells`
+* `external/cvfpu`
+* `external/fpu_div_sqrt_mvp`
+* `external/RVVI`
+
+Initialize/update them after cloning:
+
+```bash
+git submodule update --init --recursive external/common_cells external/cvfpu external/fpu_div_sqrt_mvp external/RVVI
+```
+
+## Generate the core Verilog with SBT
+
+Use the local wrapper (auto-downloads sbt-extras if needed):
+
+```bash
+./scripts/sbt emitRvvCoreMiniVerificationAxi
+```
+
+Generated outputs:
+
+* `build/verilog/RvvCoreMiniVerificationAxi.sv`
+* `build/verilog/VRvvCoreMiniVerificationAxi_parameters.h`
+* `build/verilog/RvvCoreMiniVerificationAxi.zip`
+
+## Direct runMain (optional)
+
+If you want to invoke the emitter manually:
+
+```bash
+./scripts/sbt "runMain coralnpu.EmitCore --moduleName=RvvCoreMiniVerification --enableVerification=True --enableFetchL0=False --fetchDataBits=128 --lsuDataBits=128 --enableRvv=True --enableFloat=True --useAxi --target-dir=build/verilog"
 ```
 
 
