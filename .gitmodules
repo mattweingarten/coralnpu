@@ -1,0 +1,27 @@
+[submodule "external/common_cells"]
+	path = external/common_cells
+	url = https://github.com/pulp-platform/common_cells.git
+[submodule "external/cvfpu"]
+	path = external/cvfpu
+	url = https://github.com/openhwgroup/cvfpu.git
+[submodule "external/fpu_div_sqrt_mvp"]
+	path = external/fpu_div_sqrt_mvp
+	url = https://github.com/pulp-platform/fpu_div_sqrt_mvp.git
+[submodule "external/RVVI"]
+	path = external/RVVI
+	url = https://github.com/riscv-verification/RVVI.git
+[submodule "coralwrapper/coralnpu"]
+	path = coralwrapper/coralnpu
+	url = https://github.com/mattweingarten/coralnpu.git
+[submodule "coralwrapper/external/common_cells"]
+	path = coralwrapper/external/common_cells
+	url = https://github.com/pulp-platform/common_cells.git
+[submodule "coralwrapper/external/cvfpu"]
+	path = coralwrapper/external/cvfpu
+	url = https://github.com/openhwgroup/cvfpu.git
+[submodule "coralwrapper/external/fpu_div_sqrt_mvp"]
+	path = coralwrapper/external/fpu_div_sqrt_mvp
+	url = https://github.com/pulp-platform/fpu_div_sqrt_mvp.git
+[submodule "coralwrapper/external/RVVI"]
+	path = coralwrapper/external/RVVI
+	url = https://github.com/riscv-verification/RVVI.git

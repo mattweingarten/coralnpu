@@ -1,0 +1,1 @@
+../../../coralnpu/hdl/verilog/RstSync.sv

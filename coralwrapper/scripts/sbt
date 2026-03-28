@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SBT_LAUNCH_JAR="${SCRIPT_DIR}/sbt-launch.jar"
+SBT_VERSION="1.10.11"
+
+if [[ ! -f "${SBT_LAUNCH_JAR}" ]]; then
+  curl -fL "https://repo1.maven.org/maven2/org/scala-sbt/sbt-launch/${SBT_VERSION}/sbt-launch-${SBT_VERSION}.jar" -o "${SBT_LAUNCH_JAR}"
+fi
+
+exec java -Xms512M -Xmx4G -Xss4M -jar "${SBT_LAUNCH_JAR}" "$@"
