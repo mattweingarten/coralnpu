@@ -16,6 +16,11 @@ lazy val root = (project in file("."))
       baseDirectory.value / "coralnpu" / "hdl" / "chisel" / "src" / "coralnpu" / "rvv",
       baseDirectory.value / "coralnpu" / "hdl" / "chisel" / "src" / "coralnpu" / "scalar"
     ),
+    Compile / unmanagedResourceDirectories := Seq(
+      baseDirectory.value / "src" / "main" / "resources",
+      baseDirectory.value / "src" / "main" / "resources" / "hdl",
+      baseDirectory.value / "src" / "main" / "resources" / "external"
+    ),
     // Exclude test-only and optional modules not needed for core emission.
     Compile / unmanagedSources / excludeFilter := (
       "*Test.scala" || "Spi2TLUL.scala" || "TlulFifoAsync.scala" || "SpiMaster.scala"

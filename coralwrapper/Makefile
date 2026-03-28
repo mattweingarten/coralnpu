@@ -22,7 +22,7 @@ init-submodules:
 	git submodule update --init --recursive coralwrapper/coralnpu coralwrapper/external/common_cells coralwrapper/external/cvfpu coralwrapper/external/fpu_div_sqrt_mvp coralwrapper/external/RVVI
 
 print-config:
-	@$(SBT) "runMain coralwrapper.EmitWrapper --config=$(CONFIG) --print-only=True"
+	@$(SBT) "runMain coralwrapper.EmitWrapper --config=$(CONFIG) --print-only=True --out-dir=$(OUT_DIR)"
 
 emit:
 	@$(SBT) "runMain coralwrapper.EmitWrapper --config=$(CONFIG) --out-dir=$(OUT_DIR)"
